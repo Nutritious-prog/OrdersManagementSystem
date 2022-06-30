@@ -9,7 +9,6 @@ import javax.persistence.*;
 
 @Entity
 @Table
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @ToString
@@ -27,4 +26,12 @@ public class Address {
     private String postalCode;
     @Column(name = "country", nullable = false)
     private String country;
+
+    public Address(String street, String city, String voivodeship, String postalCode, String country) {
+        this.street = street;
+        this.city = city;
+        this.voivodeship = voivodeship;
+        this.postalCode = postalCode;
+        this.country = country;
+    }
 }

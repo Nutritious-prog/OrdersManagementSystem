@@ -4,32 +4,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-/*@Entity
-@Table(name = "Client")*/
+@Entity
+@Table(name = "Order")
 @NoArgsConstructor
 @Getter
 @ToString
 public class Order {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
-
-    //TODO connect objects to certain records in db
-
+    @OneToOne
+    @JoinColumn(name = "item_id", referencedColumnName = "ID")
     private Item item;
+    @OneToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "ID")
     private Client client;
+    @Column(name = "shipping_price", nullable = false)
     private double shippingPrice;
-    boolean isSent;
 
-    public Order(Item item, Client client) {
+    public Order(Item item, Client client, double shippingPrice) {
         this.item = item;
         this.client = client;
-        this.isSent = false;
-        this.shippingPrice = 14.99;
+        this.shippingPrice = shippingPrice;
     }
 
     public double getActualOrderPrice(){

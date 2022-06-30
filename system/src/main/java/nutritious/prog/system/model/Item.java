@@ -5,20 +5,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 
-/*@Entity
-@Table(name = "Client")*/
-@AllArgsConstructor
+@Entity
+@Table(name = "Item")
 @NoArgsConstructor
 @Getter
 @ToString
 public class Item {
-    //@Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
-    //@Column(name = "name", nullable = false)
-    String name;
-    //@Column(name = "price", nullable = false)
-    double price;
+    @Column(name = "name", nullable = false)
+    private String name;
+    @Column(name = "price", nullable = false)
+    private double price;
+
+    public Item(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
 }

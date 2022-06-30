@@ -16,18 +16,18 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "ID")
     private Address address;
-    @Column(name = "discount", nullable = false)
+    @Column(name = "discount")
     private double discount;
 
-    public Client(String name, Address address) {
+    public Client(String name, Address address, double discount) {
         this.name = name;
         this.address = address;
-        this.discount = 0.0;
+        this.discount = discount;
     }
 
     public void setDiscount(double discount) {
