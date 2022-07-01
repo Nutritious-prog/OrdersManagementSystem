@@ -3,10 +3,10 @@ package nutritious.prog.system;
 import nutritious.prog.system.model.Address;
 import nutritious.prog.system.model.Client;
 import nutritious.prog.system.model.Item;
-import nutritious.prog.system.model.Order;
+import nutritious.prog.system.model.Purchase;
 import nutritious.prog.system.repositories.AddressRepository;
 import nutritious.prog.system.repositories.ItemRepository;
-import nutritious.prog.system.repositories.OrderRepository;
+import nutritious.prog.system.repositories.PurchaseRepository;
 import nutritious.prog.system.repositories.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -28,8 +28,8 @@ public class SystemApplication {
         ItemRepository itemRepository =
                 configurableApplicationContext.getBean(ItemRepository.class);
 
-        OrderRepository orderRepository =
-                configurableApplicationContext.getBean(OrderRepository.class);
+        PurchaseRepository purchaseRepository =
+                configurableApplicationContext.getBean(PurchaseRepository.class);
 
         Address address = new Address("Jugoslowianska 13c", "Lodz", "Lodzkie", "92-720", "Polska");
         addressRepository.save(address);
@@ -52,10 +52,10 @@ public class SystemApplication {
         itemRepository.save(apple);
         itemRepository.save(watermelon);
 
-        //Order order = new Order(apple, client3, 14.99);
-        //Order order2 = new Order(watermelon, client, 14.99);
+        Purchase purchase = new Purchase(apple, client3, 14.99);
+        Purchase purchase2 = new Purchase(watermelon, client, 14.99);
 
-        //orderRepository.save(order);
+        purchaseRepository.save(purchase);
         //orderRepository.save(order2);
 
         System.out.println(userRepository.count());

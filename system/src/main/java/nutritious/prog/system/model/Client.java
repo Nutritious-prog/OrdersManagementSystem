@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ID;
+    private int client_ID;
     @Column(name = "name")
     private String name;
     @OneToOne
@@ -23,6 +23,7 @@ public class Client {
     private Address address;
     @Column(name = "discount")
     private double discount;
+
 
     public Client(String name, Address address, double discount) {
         this.name = name;
